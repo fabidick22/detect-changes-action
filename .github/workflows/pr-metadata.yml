@@ -11,7 +11,7 @@ jobs:
     name: Annotates pull request with metadata
     steps:
       - name: Annotate PR
-        uses: link-/PR-metadata-action@main
+        uses: fabidick22/detect-changes-action@main
         with:
           path: "dist/"
           token: "test"
