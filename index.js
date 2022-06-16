@@ -3,30 +3,35 @@ const github = require('@actions/github');
 
 const main = async () => {
   try {
-    const owner = core.getInput('paths', { required: true });
+    const path = core.getInput('path', { required: true });
     const token = core.getInput('token', { required: true });
+    const regExp = RegExp(path)
     const octokit = new github.getOctokit(token);
 
-    const { data: changedFiles } = await octokit.rest.pulls.listFiles({
-      owner,
-      repo,
-      pull_number: pr_number,
-    });
+    const response = await octokit.rest.repos.compareCommits({
+      owner: github.context.repo.owner,
+      repo: github.context.repo.repo,
+      base: "HEAD^",
+      head: "HEAD"
+    })
 
-    let diffData = {
-      additions: 0,
-      deletions: 0,
-      changes: 0
-    };
+    const filteredFiles = (response.data.files || []).filter(file => {
+        let isMatch = regExp.test(file.filename)
+        console.log(`[${isMatch && '[** match **]'} ${file.filename}`)
+        console.log(`##Path: ${file.filename} matches`)
+        return isMatch
+    })
 
-    diffData = changedFiles.reduce((acc, file) => {
-      acc.additions += file.additions;
-      acc.deletions += file.deletions;
-      acc.changes += file.changes;
-      return acc;
-    }, diffData);
+    if(filteredFiles.length === 0){
+        console.log("No matchs found.")
+        console.log(`Raw input: ${directory}`)
+        console.log(`Regex: ${regExp.toString()}`)
+        core.setOutput("hasChanges", false)
+    }
 
-    console.log(changedFiles);
+    console.log(`Found a total of ${filteredFiles.length} matches`)
+
+    core.setOutput("hasChanges", true)
 
   } catch (error) {
     core.setFailed(error.message);
