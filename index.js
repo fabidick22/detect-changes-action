@@ -14,15 +14,16 @@ async function setOutputs(files) {
 
 const main = async () => {
     try {
-        const path = core.getInput('path', {required: false}) || "./";
-        const token = core.getInput('token', {required: true}) ;
+        const path = core.getInput('path', {required: false}) || "./"
+        const token = core.getInput('token', {required: true})
+        const pr = github.context.payload.pull_request
         const regExp = RegExp(path)
         const octokit = new github.getOctokit(token);
 
         const response = await octokit.rest.pulls.listFiles({
             owner: github.context.repo.owner,
             repo: github.context.repo.repo,
-            pull_number: "13"
+            pull_number: pr.number
         })
 
         const filteredFiles = (response.data || []).filter(file => {
