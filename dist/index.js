@@ -8870,7 +8870,7 @@ async function setOutputs(files) {
         pathsChanged.push(file.filename.split("/").slice(0, -1).join("/"))
         filesChanged.push(file.filename)
     })
-    core.setOutput("paths_changed", JSON.stringify(pathsChanged))
+    core.setOutput("paths_changed", JSON.stringify([...new Set(pathsChanged)]))
     core.setOutput("file_changed", JSON.stringify(filesChanged))
 }
 
