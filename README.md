@@ -2,7 +2,7 @@
 
 ## Description
 
-Action to get paths and files changed in a Pull Request event and use these for [GitHub Actions matrix](https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs)
+`[Action to get paths and files changed in a Pull Request event and use these for [GitHub Actions matrix](https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs)]([https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs](https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs))`
 
 ## Inputs
 
@@ -16,10 +16,8 @@ Action to get paths and files changed in a Pull Request event and use these for 
 
 | parameter | description |
 | - | - |
-| paths_changed | List of changed paths, example: ``` ["dist", "dist/data"] ```
- |
-| file_changed | List of changed files, example: ``` ["dist/main.tf", "dist/index.js"] ```
- |
+| paths_changed | List of changed paths, example: ``` ["dist", "dist/data"] ```|
+| file_changed | List of changed files, example: ``` ["dist/main.tf", "dist/index.js"] ```|
 
 
 ## Runs
