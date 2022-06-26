@@ -1,5 +1,5 @@
-name: 'PR Metadata Action'
-description: 'Adds pull request file changes as a comment to a newly opened PR'
+name: 'Detect PR changes'
+description: 'Action to get paths and files changed in a Pull Request event and use these for [GitHub Actions matrix](https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs)'
 inputs:
   path:
     description: 'Path'
@@ -9,6 +9,19 @@ inputs:
     description: 'The token to use to access the GitHub API'
     required: false
     default: ${{ github.token }}
+outputs:
+  paths_changed:
+    description: >
+      List of changed paths, example:
+      ```
+      ["dist", "dist/data"]
+      ```
+  file_changed:
+    description: >
+      List of changed files, example:
+      ```
+      ["dist/main.tf", "dist/index.js"]
+      ```
 runs:
   using: 'node16'
   main: 'dist/index.js'

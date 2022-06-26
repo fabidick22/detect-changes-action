@@ -21,5 +21,8 @@
     "@actions/core": "^1.8.2",
     "@actions/github": "^5.0.3",
     "@vercel/ncc": "^0.34.0"
+  },
+  "devDependencies": {
+    "action-docs": "^1.0.4"
   }
 }
