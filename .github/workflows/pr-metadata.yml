@@ -10,8 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     name: Annotates pull request with metadata
     steps:
+      - uses: actions/checkout@v3
+
       - name: Annotate PR
-        uses: fabidick22/detect-changes-action@main
+        uses: fabidick22/detect-changes-action@test-workflow2
         with:
           path: "dist/"
-          token: "test"
+          token: ${{ secrets.GITHUB_TOKEN }}

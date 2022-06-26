@@ -1,0 +1,19 @@
+name: Build App
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'index.js'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: tool3/ncc@v1
+      with:
+        github_token: ${{ github.token }}
+        src: 'index.js'

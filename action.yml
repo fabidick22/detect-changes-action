@@ -2,12 +2,13 @@ name: 'PR Metadata Action'
 description: 'Adds pull request file changes as a comment to a newly opened PR'
 inputs:
   path:
-    description: 'Paths list'
+    description: 'Path'
     required: false
-    default: "."
+    default: "./"
   token:
     description: 'The token to use to access the GitHub API'
-    required: true
+    required: false
+    default: ${{ github.token }}
 runs:
   using: 'node16'
   main: 'dist/index.js'
