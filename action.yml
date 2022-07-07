@@ -1,5 +1,5 @@
 name: 'Detect PR changes'
-description: 'Action to get paths and files changed in a Pull Request event and use these for [GitHub Actions matrix](https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs)'
+description: 'Action to get paths and files changed in a Pull Request event and use these for GitHub Actions matrix
 inputs:
   path:
     description: 'Path'
