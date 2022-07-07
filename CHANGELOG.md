@@ -1,3 +1,20 @@
+## [1.0.1](https://github.com/fabidick22/detect-changes-action/compare/v1.0.0...v1.0.1) (2022-07-07)
+
+### Build System
+
+- Build app - ncc ([a509adb](https://github.com/fabidick22/detect-changes-action/commit/a509adb8a6ca2a002873bdc3f569ac893c8f7318))
+
+### Documentation
+
+- Add branding info ([9dbd3b2](https://github.com/fabidick22/detect-changes-action/commit/9dbd3b22227f25d6f9fc6e5a5805c2a1d46090bb))
+
+### Other
+
+- Merge pull request #4 from fabidick22/update-github-actios-metadata ([a221023](https://github.com/fabidick22/detect-changes-action/commit/a2210230511d462ba20aff96cd0db96e14c538aa)), closes [#4](https://github.com/fabidick22/detect-changes-action/issues/4)
+- Update action.yml ([067e59f](https://github.com/fabidick22/detect-changes-action/commit/067e59f031c3a50423394b0d62670e494682e038))
+- Update action.yml ([fc2c844](https://github.com/fabidick22/detect-changes-action/commit/fc2c844cfbde03121884adecd648a59cedc50cfb))
+- Update undifined variable ([d4456ab](https://github.com/fabidick22/detect-changes-action/commit/d4456abfe35265aab9a78de3a7b9ce184c5219ea))
+
 # 1.0.0 (2022-07-07)
 
 ### Bug Fixes
