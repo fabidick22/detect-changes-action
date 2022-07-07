@@ -1,5 +1,8 @@
 name: 'Detect PR changes'
 description: 'Action to get paths and files changed in a Pull Request event and use these for GitHub Actions matrix'
+branding:
+  icon: bar-chart
+  color: white
 inputs:
   path:
     description: 'Path'
