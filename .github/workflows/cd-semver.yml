@@ -1,0 +1,56 @@
+name: Continuous Delivery
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    if: contains(github.event.commits[0].message, 'chore(release)') == false
+    name: Release
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      DRY_RUN: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Release
+        id: release
+        uses: ridedott/release-me-action@v3
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          dry-run: ${{ env.DRY_RUN }}
+          release-branches: '["main"]'
+          commit-assets: |
+            ./dist
+          release-rules-append: |
+            [
+              { "release": "patch", "type": "build" },
+              { "release": "patch", "type": "chore" },
+              { "release": false, "type": "chore", "scope": "deps-dev" },
+              { "release": "patch", "type": "chore", "scope": "deps-dev", "subject": "bump @zeit/ncc from*" },
+              { "release": "patch", "type": "ci" },
+              { "release": "patch", "type": "improvement" },
+              { "release": "patch", "type": "refactor" },
+              { "release": false, "subject": "*\\[skip release\\]*" }
+            ]
+
+      - uses: actions/checkout@v3
+        if: steps.release.outputs.released == 'true' && env.DRY_RUN == 'false'
+        with:
+          fetch-depth: 1
+          persist-credentials: true
+
+      - name: Tag
+        if: steps.release.outputs.released == 'true' && env.DRY_RUN == 'false'
+        run: |
+          git push origin :refs/tags/'v${{ steps.release.outputs.major }}'
+          git tag 'v${{ steps.release.outputs.major }}' --force
+          git push --tags

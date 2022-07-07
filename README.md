@@ -57,9 +57,11 @@ jobs:
 
 | parameter | description |
 | - | - |
-| paths_changed | List of changed paths, example: ``` ["dist", "dist/data"] ```
+| paths_changed | List of changed paths, example:
+``` ["dist", "dist/data"] ```
  |
-| file_changed | List of changed files, example: ``` ["dist/main.tf", "dist/index.js"] ```
+| file_changed | List of changed files, example:
+``` ["dist/main.tf", "dist/index.js"] ```
  |
 
 
