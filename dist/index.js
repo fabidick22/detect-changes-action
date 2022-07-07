@@ -8896,7 +8896,7 @@ const main = async () => {
 
         if (filteredFiles.length === 0) {
             console.log("No matchs found.")
-            console.log(`Raw input: ${directory}`)
+            console.log(`Raw input: ${path}`)
             console.log(`Regex: ${regExp.toString()}`)
         }
         await setOutputs(filteredFiles);
