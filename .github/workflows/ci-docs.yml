@@ -1,0 +1,27 @@
+name: Update Documentation
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'action.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - run: npm install -g action-docs
+
+    - run: action-docs -u
+
+    - name: Update README.md file
+      uses: test-room-7/action-update-file@v1
+      if: github.event_name == 'pull_request'
+      with:
+        file-path: README.md
+        commit-msg: Update github actions documentation
+        github-token: ${{ github.token }}
+        branch: ${{ github.head_ref }}
