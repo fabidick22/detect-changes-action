@@ -24,6 +24,8 @@ jobs:
       - name: Release
         id: release
         uses: ridedott/release-me-action@v3
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         with:
           dry-run: ${{ env.DRY_RUN }}
           release-branches: '["main", "add-semver-workflow"]'
