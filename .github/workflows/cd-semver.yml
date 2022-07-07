@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - add-semver-workflow
 
 jobs:
   release:
@@ -13,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
-      DRY_RUN: true
+      DRY_RUN: false
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -28,7 +27,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         with:
           dry-run: ${{ env.DRY_RUN }}
-          release-branches: '["main", "add-semver-workflow"]'
+          release-branches: '["main"]'
           commit-assets: |
             ./dist
           release-rules-append: |
@@ -44,7 +43,7 @@ jobs:
             ]
 
       - uses: actions/checkout@v3
-        if: steps.release.outputs.released == 'true'
+        if: steps.release.outputs.released == 'true' && env.DRY_RUN == 'false'
         with:
           fetch-depth: 1
           persist-credentials: true

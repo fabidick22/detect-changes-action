@@ -22,6 +22,6 @@ jobs:
       if: github.event_name == 'pull_request'
       with:
         file-path: README.md
-        commit-msg: Update github actions documentation
+        commit-msg: 'docs: Update github actions documentation [skip release]'
         github-token: ${{ github.token }}
         branch: ${{ github.head_ref }}
