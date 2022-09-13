@@ -1,3 +1,14 @@
+# [2.0.0](https://github.com/fabidick22/detect-changes-action/compare/v1.0.2...v2.0.0) (2022-09-13)
+
+### Other
+
+- Build app ([2e69a3d](https://github.com/fabidick22/detect-changes-action/commit/2e69a3df07d5c8e5642eabd3c785085e700b0ffc))
+- Build app - Rename and create new outputs BREAKING CHANGES ([6667571](https://github.com/fabidick22/detect-changes-action/commit/6667571fb194745d387193e7c57e8cc9c7eb23ef))
+
+### BREAKING CHANGE
+
+- Rename and create new outputs
+
 ## [1.0.2](https://github.com/fabidick22/detect-changes-action/compare/v1.0.1...v1.0.2) (2022-09-13)
 
 ### Code Refactoring
