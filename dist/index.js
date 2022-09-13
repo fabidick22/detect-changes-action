@@ -8870,8 +8870,10 @@ async function setOutputs(files) {
         pathsChanged.push(file.filename.split("/").slice(0, -1).join("/"))
         filesChanged.push(file.filename)
     })
-    core.setOutput("paths_changed", JSON.stringify([...new Set(pathsChanged)]))
-    core.setOutput("file_changed", JSON.stringify(filesChanged))
+    core.setOutput("paths_list", JSON.stringify([...new Set(pathsChanged)]))
+    core.setOutput("file_list", JSON.stringify([...new Set(filesChanged)]))
+    core.setOutput("paths_str", [...new Set(pathsChanged)].join())
+    core.setOutput("file_str", [...new Set(filesChanged)].join())
 }
 
 const main = async () => {
@@ -8895,7 +8897,7 @@ const main = async () => {
         })
 
         if (filteredFiles.length === 0) {
-            console.log("No matchs found.")
+            console.log("No matches found.")
             console.log(`Raw input: ${path}`)
             console.log(`Regex: ${regExp.toString()}`)
         }
