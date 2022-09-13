@@ -7,7 +7,7 @@ Action to get paths and files changed in a Pull Request event and use these for 
 - Get list of files changed in a PR
 
 ## Usage
-<details><summary><strong> Get a list of paths to use in a matrix of jobs</strong></summary>
+<details><summary><strong> Get a list of paths to use in a matrix of jobs (v1)</strong></summary>
 
 ```yaml
 name: 'PR Detect changes'
@@ -57,12 +57,10 @@ jobs:
 
 | parameter | description |
 | - | - |
-| paths_changed | List of changed paths, example:
-``` ["dist", "dist/data"] ```
- |
-| file_changed | List of changed files, example:
-``` ["dist/main.tf", "dist/index.js"] ```
- |
+| paths_list | List of changed paths, example: `["dist", "dist/data"]` |
+| file_list | List of changed files, example: `["dist/main.tf", "dist/index.js"]` |
+| paths_str | List of changed paths separated by `,` example: `"dist,dist/data"` |
+| file_str | List of changed files separated by `,` example: `"dist/main.tf,dist/index.js"` |
 
 
 

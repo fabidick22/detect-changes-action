@@ -13,20 +13,14 @@ inputs:
     required: false
     default: ${{ github.token }}
 outputs:
-  paths_changed:
-    description: >
-      List of changed paths, example:
-
-      ```
-      ["dist", "dist/data"]
-      ```
-  file_changed:
-    description: >
-      List of changed files, example:
-
-      ```
-      ["dist/main.tf", "dist/index.js"]
-      ```
+  paths_list:
+    description: 'List of changed paths, example: `["dist", "dist/data"]`'
+  file_list:
+    description: 'List of changed files, example: `["dist/main.tf", "dist/index.js"]`'
+  paths_str:
+    description: 'List of changed paths separated by `,` example: `"dist,dist/data"`'
+  file_str:
+    description: 'List of changed files separated by `,` example: `"dist/main.tf,dist/index.js"`'
 runs:
   using: 'node16'
   main: 'dist/index.js'
