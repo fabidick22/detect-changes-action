@@ -1,3 +1,15 @@
+## [1.0.2](https://github.com/fabidick22/detect-changes-action/compare/v1.0.1...v1.0.2) (2022-09-13)
+
+### Code Refactoring
+
+- build app \nBREAKING CHANGE: Rename and create new outputs ([772818e](https://github.com/fabidick22/detect-changes-action/commit/772818e2918ed73fe5f99eeb4ca1abf6db13ab91))
+
+### Other
+
+- Merge pull request #6 from fabidick22/refactor-outputs ([d7cd639](https://github.com/fabidick22/detect-changes-action/commit/d7cd639a91c10a75a5d187cd31e08037f394c660)), closes [#6](https://github.com/fabidick22/detect-changes-action/issues/6)
+- Merge pull request #5 from fabidick22/refactor-outputs ([89c2983](https://github.com/fabidick22/detect-changes-action/commit/89c29838fe17abb2833224d971ae29232a52925e)), closes [#5](https://github.com/fabidick22/detect-changes-action/issues/5)
+- BREAKING CHANGE: Rename and create new outputs ([74bbeda](https://github.com/fabidick22/detect-changes-action/commit/74bbeda600717efdff4677b9f46c8eb764d66a15))
+
 ## [1.0.1](https://github.com/fabidick22/detect-changes-action/compare/v1.0.0...v1.0.1) (2022-07-07)
 
 ### Build System
