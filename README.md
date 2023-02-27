@@ -20,7 +20,7 @@ jobs:
   changes:
     runs-on: ubuntu-latest
     outputs:
-      packages: ${{ steps.filter.outputs.paths_changed }}
+      packages: ${{ steps.filter.outputs.paths_list }}
     steps:
       - uses: actions/checkout@v3
       - name: Annotate PR
@@ -57,10 +57,10 @@ jobs:
 
 | parameter | description |
 | - | - |
-| paths_list | List of changed paths, example: `["dist", "dist/data"]` |
-| file_list | List of changed files, example: `["dist/main.tf", "dist/index.js"]` |
-| paths_str | List of changed paths separated by `,` example: `"dist,dist/data"` |
-| file_str | List of changed files separated by `,` example: `"dist/main.tf,dist/index.js"` |
+| `paths_list` | List of changed paths, example: `["dist", "dist/data"]`             |
+| `file_list`  | List of changed files, example: `["dist/main.tf", "dist/index.js"]` |
+| `paths_str`  | List of changed paths separated by `,` example: `"dist,dist/data"`  |
+| `file_str`   | List of changed files separated by `,` example: `"dist/main.tf,dist/index.js"` |
 
 
 
