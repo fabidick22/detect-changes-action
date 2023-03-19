@@ -21,7 +21,7 @@ const main = async () => {
     let changedFiles = [];
     const context = github.context;
 
-    const { eventName, payload } = context;
+    const { eventName, payload, repo } = context;
 
     let base, head;
 
@@ -51,8 +51,8 @@ const main = async () => {
     }
     const response = await octokit.rest.repos.compareCommitsWithBasehead({
       basehead: `${base}...${head}`,
-      owner: github.context.repo.owner,
-      repo: github.context.repo.repo,
+      owner: repo.owner,
+      repo: repo.repo,
     });
 
     if (response.status !== 200) {
