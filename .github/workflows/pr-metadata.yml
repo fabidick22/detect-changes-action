@@ -3,6 +3,7 @@ name: PR metadata annotation
 on:
   pull_request:
     types: [opened, reopened, synchronize]
+  push:
 
 jobs:
 
@@ -13,7 +14,6 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Annotate PR
-        uses: jbbeal/detect-changes-action@test-workflow2
+        uses: "./"
         with:
-          path: "dist/"
           token: ${{ secrets.GITHUB_TOKEN }}
