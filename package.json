@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "ncc build index.js --license licenses.txt"
+    "build": "ncc build index.js --license licenses.txt",
+    "publish-action": "git tag -a -m 'Releasing action' v`jq .version < package.json --raw-output` && git push --follow-tags"
   },
   "repository": {
     "type": "git",
