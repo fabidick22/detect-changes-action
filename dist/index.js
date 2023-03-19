@@ -9630,19 +9630,20 @@ const main = async () => {
     const path = core.getInput('path', {required: false}) || "./"
     const token = core.getInput('token', {required: true})
     let changedFiles = [];
+    const context = github.context;
 
-    const eventName = context.eventName;
+    const { eventName, payload } = context;
 
     let base, head;
 
     switch (eventName) {
     case 'pull_request':
-      base = context.payload.pull_request?.base?.sha;
-      head = context.payload.pull_request?.head?.sha;
+      base = payload.pull_request?.base?.sha;
+      head = payload.pull_request?.head?.sha;
       break;
     case 'push':
-      base = context.payload.before;
-      head = context.payload.after;
+      base = payload.before;
+      head = payload.after;
       break;
     default:
       core.setFailed('This action only supports pull requests and pushes.')
@@ -9651,7 +9652,6 @@ const main = async () => {
     core.info(`Base commit: ${base}`);
     core.info(`Head commit: ${head}`);
     
-    const pr = github.context.payload.pull_request
     const regExp = RegExp(path)
     const octokit = new github.getOctokit(token);
 
@@ -9660,9 +9660,8 @@ const main = async () => {
         `Missing base and head commits in ${context.eventName} event.`
       );
     }
-    const response = await octokit.repos.compareCommits({
-      base,
-      head,
+    const response = await octokit.repos.compareCommitsWithBasehead({
+      basehead: `${base}..${head}`,
       owner: github.context.repo.owner,
       repo: github.context.repo.repo,
     });

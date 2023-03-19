@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Annotate PR
-        uses: fabidick22/detect-changes-action@test-workflow2
+        uses: jbbeal/detect-changes-action@test-workflow2
         with:
           path: "dist/"
           token: ${{ secrets.GITHUB_TOKEN }}
