@@ -16,5 +16,4 @@ jobs:
       - name: Annotate PR
         uses: "./"
         with:
-          path: "dist/"
           token: ${{ secrets.GITHUB_TOKEN }}
