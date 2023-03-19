@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Annotate PR
         id: filter
-        uses: jeffbeal/detect-changes-action@v1
+        uses: jbbeal/detect-changes-action@v1
         with:
           path: "modules/"
 
