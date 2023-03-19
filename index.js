@@ -49,8 +49,8 @@ const main = async () => {
         `Missing base and head commits in ${context.eventName} event.`
       );
     }
-    const response = await octokit.repos.compareCommitsWithBasehead({
-      basehead: `${base}..${head}`,
+    const response = await octokit.rest.repos.compareCommitsWithBasehead({
+      basehead: `${base}...${head}`,
       owner: github.context.repo.owner,
       repo: github.context.repo.repo,
     });
