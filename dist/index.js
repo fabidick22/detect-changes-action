@@ -9632,7 +9632,7 @@ const main = async () => {
     let changedFiles = [];
     const context = github.context;
 
-    const { eventName, payload } = context;
+    const { eventName, payload, repo } = context;
 
     let base, head;
 
@@ -9662,8 +9662,8 @@ const main = async () => {
     }
     const response = await octokit.rest.repos.compareCommitsWithBasehead({
       basehead: `${base}...${head}`,
-      owner: github.context.repo.owner,
-      repo: github.context.repo.repo,
+      owner: repo.owner,
+      repo: repo.repo,
     });
 
     if (response.status !== 200) {
@@ -9671,6 +9671,8 @@ const main = async () => {
         `Github API failed trying to compare ${base} and ${head}; returned ${response.status}, expected 200.`
       );
     }
+
+    core.info(`Head is ${response.data.status} of base`);
     if (response.data.status !== 'ahead') {
       core.setFailed(
         `Commit ${head} is not ahead of ${base}`
