@@ -2,7 +2,7 @@
 
 Action to get paths and files changed in a Pull Request event and use these for [GitHub Actions matrix](https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs).
 
-NOTE: this repository started out as a fork of `fabidick22/detect-changes-action` but ended up copying a lot of code from `jitterbit/get-changed-files` over time.
+NOTE: This repository uses lot of the code from the [jitterbit/get-changed-files](https://github.com/jitterbit/get-changed-files) repository.
 
 ## Available Features
 - Get list of directories changed in a PR
@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Annotate PR
         id: filter
-        uses: jbbeal/detect-changes-action@v1
+        uses: fabidick22/detect-changes-action@v2
         with:
           path: "modules/"
 
