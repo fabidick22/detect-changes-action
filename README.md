@@ -1,6 +1,8 @@
 # detect-changes-action
 
-Action to get paths and files changed in a Pull Request event and use these for [GitHub Actions matrix](https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs)
+Action to get paths and files changed in a Pull Request event and use these for [GitHub Actions matrix](https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs).
+
+NOTE: This repository uses lot of the code from the [jitterbit/get-changed-files](https://github.com/jitterbit/get-changed-files) repository.
 
 ## Available Features
 - Get list of directories changed in a PR
@@ -20,12 +22,12 @@ jobs:
   changes:
     runs-on: ubuntu-latest
     outputs:
-      packages: ${{ steps.filter.outputs.paths_changed }}
+      packages: ${{ steps.filter.outputs.paths_list }}
     steps:
       - uses: actions/checkout@v3
       - name: Annotate PR
         id: filter
-        uses: fabidick22/detect-changes-action@v1
+        uses: fabidick22/detect-changes-action@v2
         with:
           path: "modules/"
 
@@ -57,10 +59,10 @@ jobs:
 
 | parameter | description |
 | - | - |
-| paths_list | List of changed paths, example: `["dist", "dist/data"]` |
-| file_list | List of changed files, example: `["dist/main.tf", "dist/index.js"]` |
-| paths_str | List of changed paths separated by `,` example: `"dist,dist/data"` |
-| file_str | List of changed files separated by `,` example: `"dist/main.tf,dist/index.js"` |
+| `paths_list` | List of changed paths, example: `["dist", "dist/data"]`             |
+| `file_list`  | List of changed files, example: `["dist/main.tf", "dist/index.js"]` |
+| `paths_str`  | List of changed paths separated by `,` example: `"dist,dist/data"`  |
+| `file_str`   | List of changed files separated by `,` example: `"dist/main.tf,dist/index.js"` |
 
 
 

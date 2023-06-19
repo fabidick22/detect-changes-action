@@ -2,9 +2,11 @@
   "name": "detect-changes-action",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "ncc build index.js --license licenses.txt",
+    "publish-action": "git tag -a -m 'Releasing action' v`jq .version < package.json --raw-output` && git push --follow-tags"
   },
   "repository": {
     "type": "git",
@@ -18,11 +20,11 @@
   },
   "homepage": "https://github.com/fabidick22/detect-changes-action#readme",
   "dependencies": {
-    "@actions/core": "^1.8.2",
-    "@actions/github": "^5.0.3",
-    "@vercel/ncc": "^0.34.0"
+    "@actions/core": "^1.10.0",
+    "@actions/github": "^5.0.3"
   },
   "devDependencies": {
+    "@vercel/ncc": "^0.36.1",
     "action-docs": "^1.0.4"
   }
 }
